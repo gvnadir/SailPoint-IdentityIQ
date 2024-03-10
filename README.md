@@ -93,27 +93,27 @@ During the certification process, a user's set of access is reviewed by certifie
 
 Steps of a sample manager certification campaign:
 
-#### 1) A certification campaign is created
+1. A certification campaign is created
 
-A compliance officer creates a manager certification campaign to require all managers to review and certify the access of their direct reports. The campaign creator also specifies when the campaign will run, how long it will last, and other key dates.
+   A compliance officer creates a manager certification campaign to require all managers to review and certify the access of their direct reports. The campaign creator also specifies when the campaign will run, how long it will last, and other key dates.
 
-#### 2) Access information is collected
+2. Access information is collected
 
-IdentityIQ collects and compiles all the required information related to identities, points of access, applications, and more. This process can take minutes, hours, or even days depending on the size of the campaign.
+   IdentityIQ collects and compiles all the required information related to identities, points of access, applications, and more. This process can take minutes, hours, or even days depending on the size of the campaign.
 
-#### 3) Access reviews are created for certifier review
+3. Access reviews are created for certifier review
 
-During the generation phase, an access review is created for each certifier designated in the certification campaign, and you can configure IdentityIQ to notify the certifiers that they have access reviews awaiting their action. A typical certification campaign may require certifiers to complete their reviews in a 2 or 4 week timeframe.
+   During the generation phase, an access review is created for each certifier designated in the certification campaign, and you can configure IdentityIQ to notify the certifiers that they have access reviews awaiting their action. A typical certification campaign may require certifiers to complete their reviews in a 2 or 4 week timeframe.
 
-#### 4) Each manager approves or revokes access
+4. Each manager approves or revokes access
 
-Managers open their assigned access reviews and approve or revoke access for their employees. If AI-Driven Access Recommendations is deployed in the organization, managers will see a suggestion, based on comparisons with other identities, for each access.
+   Managers open their assigned access reviews and approve or revoke access for their employees. If AI-Driven Access Recommendations is deployed in the organization, managers will see a suggestion, based on comparisons with other identities, for each access.
 
-#### 5) Challenge, sign-off, and revocation
+5. Challenge, sign-off, and revocation
 
-An optional challenge phase allows users who would lose access to challenge that decision, and certifiers can reconsider their decisions.
+   An optional challenge phase allows users who would lose access to challenge that decision, and certifiers can reconsider their decisions.
 
-Once finalized, the managers sign-off on the access review, then IdentityIQ begins the revocation process, as needed.
+   Once finalized, the managers sign-off on the access review, then IdentityIQ begins the revocation process, as needed.
 
 ## Policies
 
@@ -242,6 +242,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - A support plugin developed by SailPoint helps collect data from your IdentityIQ instance and provides it to the SailPoint support team. The plugin collects the required data into one zip file for uploading.
 
 - The SQL Browser Tool provides administrators with view-only access to the IdentityIQ database to help implement and support IdentityIQ.
+
 # SailPoint - IdentityIQ
 
 ## Introducing IdentityIQ
