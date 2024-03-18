@@ -61,7 +61,7 @@ Also known as **permissions**, are the type of access a user has when logging in
 
 ### Aggregation
 
-The process of collecting or reading data from applications in your organization. Regular, periodic aggregation is key to keeping identity cubes up to date.
+The process of collecting or **reading** data from applications in your organization. Regular, periodic aggregation is key to keeping identity cubes up to date.
 
 #### Governance Model Steps
 
@@ -121,7 +121,7 @@ Steps of a sample manager certification campaign:
 
 ### Separation of duties (SoD)
 
-Sod policies ensure that users do not hold conflicting access; these policies are very common in many organizations. Generally, SoD policies ensure that no single user has access or responsibility for entire process, such as approving new vendors and also paying those vendors.
+SoD policies ensure that users do not hold conflicting access; these policies are very common in many organizations. Generally, SoD policies ensure that no single user has access or responsibility for entire process, such as approving new vendors and also paying those vendors.
 
 ### Dormant accounts
 
@@ -136,7 +136,7 @@ The person assigned as the violation owner can take action on the violation thro
 
 - Allow it
 - Correct it
-- Certify the identity. Administrators have this option, which allows them to take a look at all access held by the user and make decisions about that access holistically
+- Certify the identity. Administrators have this option, which allows them to take a look at all access held by the user and make decisions about that access
 
 A key purpose of the policy detection process is to ensure that someone is aware of undesired access and can take action to fix the problem. Once you've seen the violation, you can take steps to address it, which may involve actions outside of IdentityIQ. In IdentityIQ, you can allow the violation as an exception for a certain period of time. If the problem still exists after that time period ends, IdentityIQ will flag it again so it isn't forgotten.
 
