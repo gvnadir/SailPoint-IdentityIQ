@@ -36,7 +36,7 @@ SailPoint IdentityIQ provides:
 - Flexible approval model
 - Policy enforcement
 - Automated lifecycle event management (as user join the company, switch roles, or leave)
-- Batch updates (allow an IT team to make changes fo a set of users)
+- Batch updates (allow an IT team to make changes for a set of users)
 - Automated provisioning to connected applications
 
 #### Compliance Management
@@ -197,7 +197,7 @@ All implementations include extended attributes, such as department, location, j
 
 ### Rules & Branding
 
-Most implementations use rules, little snippets of code injected into the IdentityIQ logic. Most will also brand IdentityIQ with their own colors and logos.
+Most implementations use rules, **little snippets of code injected into the IdentityIQ logic**. Most will also brand IdentityIQ with their own colors and logos.
 
 ### Workflows
 
