@@ -242,3 +242,44 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - A support plugin developed by SailPoint helps collect data from your IdentityIQ instance and provides it to the SailPoint support team. The plugin collects the required data into one zip file for uploading.
 
 - The SQL Browser Tool provides administrators with view-only access to the IdentityIQ database to help implement and support IdentityIQ.
+
+## IdentityIQ Essentials
+
+### Generate Database Schema ( DDL )
+
+Create IdentityIQ database:
+
+`.../WEB-INF/bin/iiq schema`
+
+### Extend Database
+
+Create delta DDL
+
+`.../WEB-INF/bin/iiq extendedSchema`
+
+### Configure IdentityIQ Properties
+
+Identify database to iiq
+
+`.../WEB-INF/classes/iiq.properties`
+
+### Initialize IdentityIQ Default Objects
+
+- Initialize iiq
+
+  ```
+  .../WEB-INF/bin/iiq console
+  import init.xml
+  ```
+
+- Initialize iiq Lifecycle Manager
+
+  ```
+  .../WEB-INF/bin/iiq console
+  import init-lcm.xml
+  ```
+
+### How are Identity Cubes Created?
+
+1. Automatically through account aggregation
+2. Manually using Lifecycle Manager
