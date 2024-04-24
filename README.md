@@ -81,7 +81,7 @@ Users can ask for changes to access by requesting the addition or removal of rol
 
 - IdentityIQ monitors data: looking for changes, also known as **events**
 - IdentityIQ detects changes: when an event, or change, is detected by IdentityIQ, provisioning is initiated
-- IdentityIQ provisioning data: the changes are written to the systems or applications that are defined to IdenitityIQ
+- IdentityIQ provisioning data: the changes are **written** to the systems or applications that are defined to IdenitityIQ
 
 ## Certification and Access Reviews
 
@@ -244,6 +244,29 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - The SQL Browser Tool provides administrators with view-only access to the IdentityIQ database to help implement and support IdentityIQ.
 
 ## IdentityIQ Essentials
+
+### Exercise 1 - Configure IdentityIQ
+
+1. Confirm the installation of IdentityIQ
+
+   - Using a linux terminal in the machine where IdentityIQ is installed, navigate to `~/tomcat/webapps/identityiq/WEB-INF/bin` and run the following command:
+
+     `./iiq console -j`
+
+     > The `-q` option enables using the arrow keys to page through commands entered during the session.
+
+   - Run the following command: `about`
+   - The **Version** line lists the iiq version. patch version and the build
+   - Enter `quit` to exit the console
+
+2. Explore IdentityIQ
+
+   - Navigate to IdentityIQ url: _http://localhost:8080/identityiq/_
+   - Log in to iiq as the iiq Administrator: **spadmin / admin**
+
+### Exercise 2 - Create Identity Cubes
+
+...
 
 ### Generate Database Schema ( DDL )
 
