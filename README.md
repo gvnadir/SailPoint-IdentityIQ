@@ -81,7 +81,7 @@ Users can ask for changes to access by requesting the addition or removal of rol
 
 - IdentityIQ monitors data: looking for changes, also known as **events**
 - IdentityIQ detects changes: when an event, or change, is detected by IdentityIQ, provisioning is initiated
-- IdentityIQ provisioning data: the changes are **written** to the systems or applications that are defined to IdenitityIQ
+- IdentityIQ provisioning data: the changes are written to the systems or applications that are defined to IdenitityIQ
 
 ## Certification and Access Reviews
 
@@ -245,7 +245,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
 ## IdentityIQ Essentials
 
-### Exercise 1 - Configure IdentityIQ
+### Configure IdentityIQ
 
 1. Confirm the installation of IdentityIQ
 
@@ -253,7 +253,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
      `./iiq console -j`
 
-     > The `-q` option enables using the arrow keys to page through commands entered during the session.
+     > The `-j` option enables using the arrow keys to page through commands entered during the session.
 
    - Run the following command: `about`
    - The **Version** line lists the iiq version. patch version and the build
@@ -263,10 +263,6 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
    - Navigate to IdentityIQ url: _http://localhost:8080/identityiq/_
    - Log in to iiq as the iiq Administrator: **spadmin / admin**
-
-### Exercise 2 - Create Identity Cubes
-
-...
 
 ### Generate Database Schema ( DDL )
 
@@ -304,5 +300,14 @@ Identify database to iiq
 
 ### How are Identity Cubes Created?
 
-1. Automatically through account aggregation
-2. Manually using Lifecycle Manager
+1. Automatically through **Account Aggregation**
+2. Manually using **Lifecycle Manager**
+
+### Identity Attributes
+
+- Identity data used to drive process in IdentityIQ both manual and automated
+- Standard Attributes
+  - Support basic system functionality
+  - Searchable by default
+- Extended Attributes
+  - Identity Attributes defined specifically for an installation
