@@ -193,7 +193,7 @@ IdentityIQ’s robust functionality can be extended to meet the needs of busines
 
 ### Extended Attributes
 
-All implementations include extended attributes, such as department, location, job title. These are data that your enterprise needs to manage your identity access program.
+All implementations include extended attributes, such as department, location, job title. These are **data that your enterprise needs to manage your identity access program**.
 
 ### Rules & Branding
 
@@ -245,7 +245,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
 ## IdentityIQ Essentials
 
-### Configure IdentityIQ
+### 1. Configure IdentityIQ
 
 1. Confirm the installation of IdentityIQ
 
@@ -264,50 +264,95 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
    - Navigate to IdentityIQ url: _http://localhost:8080/identityiq/_
    - Log in to iiq as the iiq Administrator: **spadmin / admin**
 
-### Generate Database Schema ( DDL )
+### 2. Create Database
 
-Create IdentityIQ database:
+1. Generate Database Schema ( DDL )
 
-`.../WEB-INF/bin/iiq schema`
+   Create IdentityIQ database:
 
-### Extend Database
+   `.../WEB-INF/bin/iiq schema`
 
-Create delta DDL
+2. Extend Database
 
-`.../WEB-INF/bin/iiq extendedSchema`
+   Create delta DDL
 
-### Configure IdentityIQ Properties
+   `.../WEB-INF/bin/iiq extendedSchema`
 
-Identify database to iiq
+3. Configure IdentityIQ Properties
 
-`.../WEB-INF/classes/iiq.properties`
+   Identify database to iiq
 
-### Initialize IdentityIQ Default Objects
+   `.../WEB-INF/classes/iiq.properties`
 
-- Initialize iiq
+4. Initialize IdentityIQ Default Objects
 
-  ```
-  .../WEB-INF/bin/iiq console
-  import init.xml
-  ```
+   - Initialize iiq
 
-- Initialize iiq Lifecycle Manager
+     ```
+     .../WEB-INF/bin/iiq console
+     import init.xml
+     ```
 
-  ```
-  .../WEB-INF/bin/iiq console
-  import init-lcm.xml
-  ```
+   - Initialize iiq Lifecycle Manager
 
-### How are Identity Cubes Created?
+     ```
+     .../WEB-INF/bin/iiq console
+     import init-lcm.xml
+     ```
 
-1. Automatically through **Account Aggregation**
-2. Manually using **Lifecycle Manager**
+### 3. Define Application
 
-### Identity Attributes
+- Representation of the imported source in SailPoint
 
-- Identity data used to drive process in IdentityIQ both manual and automated
-- Standard Attributes
-  - Support basic system functionality
-  - Searchable by default
-- Extended Attributes
-  - Identity Attributes defined specifically for an installation
+### 4. Aggregation Task
+
+- _Setup/Tasks/New Task/Account Aggregation_
+- **Generation of the Identity Cubes** from the defined applications
+- In _Identity/Identity Warehouse_ you can find the generated identitites
+- In _Identity/Identity Warehouse/Application Accounts_ there are the Application Accounts Data
+- In _Identity/Identity Warehouse/Attributes_, the Attributes sections is still blank because **there is no mapping between the identity attributes and the application yet**
+
+### 5. Define and Map Identity Attributes
+
+- In _Gear/Global Settings/Identity Mappings_ you can populate both Standard and Extended Identity Attributes from the Application Accounts
+
+### 6. Refresh Identity Cubes
+
+- In _Setup/Tasks/Refresh identity Cube_ it is possible to refresh the Identity Cubes in order to apply the mapped attributes at potin 3
+
+### Capabilities
+
+- Default User Rights includes
+  - Home Page
+  - Quicklinks
+  - My Work
+- Capabilities
+  - Define what additional rights a user has within IdentityIQ
+  - Control which menu options are available
+
+### Scoping
+
+- The act of subdividing data into logical groups and granting access based on those subdivisiona
+- Scopes control the objects a user can see and act upon
+
+### Workgroups
+
+- Set of identities treated as a single IdentityIQ identity
+- Workgroups are used for:
+  - Assigning access to IdentityIQ (capabilities, scopes)
+- Sharing IdentityIQ responsabilities
+  - Team-assigned work items
+  - Object ownership (best practice)
+
+### Populations
+
+- **Identity search** (saved query) that defines a set of identities that share a common set of attributes
+- Used as a filter on the set of identities included in a task, certification or report
+- Manually created
+
+### Groups
+
+- **Set of identities created automatically** based on the value of a single identity attribute
+- Used to filter identities included in a task, certification or report
+- Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
+- Automatically created by running the `Refresh Group` task
