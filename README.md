@@ -303,6 +303,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 ### 3. Define Application
 
 - Representation of the imported source in SailPoint
+- _Applications/Application Definition/Add New Application_
 
 ### 4. Aggregation Task
 
@@ -332,7 +333,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
 ### Scoping
 
-- The act of subdividing data into logical groups and granting access based on those subdivisiona
+- The act of subdividing data into logical groups and granting access based on those subdivision
 - Scopes control the objects a user can see and act upon
 
 ### Workgroups
@@ -349,10 +350,32 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - **Identity search** (saved query) that defines a set of identities that share a common set of attributes
 - Used as a filter on the set of identities included in a task, certification or report
 - Manually created
+- Can be created from **multiple search criteria**
 
 ### Groups
 
-- **Set of identities created automatically** based on the value of a single identity attribute
 - Used to filter identities included in a task, certification or report
 - Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
 - Automatically created by running the `Refresh Group` task
+- **Created based off a **single identity attribute**
+
+### Create Populations
+
+1. Navigate to _Intelligence/Advanced Analytics_ 
+2. Make sure `Search Type` is `Identity` and click `Clear Search`
+3. Select `Is Inactive: False` and `Type: Employee` and click `Run Search`
+4. From the `Result Options` drop down menu, select `Save Identities as Population`
+5. Set `Name: Active Employees` and `Description: Active employee identities`
+6. Update the population's visibility to public from _Setup/Groups/Populations_ click the Population's name, uncheck `private` and save
+
+### Create Groups
+
+1. Navigate to _Setup/Groups/Groups tab_ and click `Create New Group`
+2. Generate Groups using the newly created group configuration
+   - Navigate to _Setup/Tasks_ and search for `Refresh Groups`
+   - `Save and Execute`
+   - Check the groups
+
+### Create Workgroups
+
+1. Navigate to _Setup/Groups/Workgroups_ and click `Create Workgroup`
