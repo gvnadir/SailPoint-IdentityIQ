@@ -73,9 +73,13 @@ The process of collecting or **reading** data from applications in your organiza
 
 Users can ask for changes to access by requesting the addition or removal of roles and entitlements. Access requests are a function of the IdentityIQ Lifecycle Manager module.
 
+## Provisioning
+
+> Provisioning refers to the **automated process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
+
 ## Event-Driven Provisioning
 
-> **Event-driven provisioning** is an automated process used to keep an identity's access current with their job needs and responsibilities. With it, enterprises can automatically provision or change access that’s required and remove access that's no longer necessary.
+> Event-driven provisioning is a specific approach where provisioning actions are triggered by specific events or changes in the system. 
 
 ### Event-Driven Provisioning Process
 
@@ -357,7 +361,7 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - Used to filter identities included in a task, certification or report
 - Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
 - Automatically created by running the `Refresh Group` task
-- **Created based off a **single identity attribute**
+- Created based off a **single identity attribute**
 
 ### Create Populations
 
@@ -379,3 +383,13 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 ### Create Workgroups
 
 1. Navigate to _Setup/Groups/Workgroups_ and click `Create Workgroup`
+
+### Account Correlation
+
+- Matches an account to an authoritative Identity Cube
+   - If no correlation, non-authoritative cube is created
+- Options for configuring correlations:
+   - Rapid Setup correlation
+   - Correlation Wizard
+   - Correlation rule
+
