@@ -85,7 +85,7 @@ Users can ask for changes to access by requesting the addition or removal of rol
 
 - IdentityIQ monitors data: looking for changes, also known as **events**
 - IdentityIQ detects changes: when an event, or change, is detected by IdentityIQ, provisioning is initiated
-- IdentityIQ provisioning data: the changes are written to the systems or applications that are defined to IdenitityIQ
+- IdentityIQ provisioning data: the processo of **writing** the changes to the systems or applications that are defined to IdenitityIQ
 
 ## Certification and Access Reviews
 
@@ -393,3 +393,4 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
    - Correlation Wizard
    - Correlation rule
 
+## Managed Applications and Account Correlation
