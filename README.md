@@ -358,10 +358,10 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
 ### Groups
 
+- Group of IdentityIQ users based on shared value of a **single identity** attribute and used to define target of operation (e.g. task filter, report filter)
 - Used to filter identities included in a task, certification or report
 - Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
 - Automatically created by running the `Refresh Group` task
-- Created based off a **single identity attribute**
 
 ### Create Populations
 
@@ -384,6 +384,14 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 
 1. Navigate to _Setup/Groups/Workgroups_ and click `Create Workgroup`
 
+### Account Schemas
+
+- Account schemas define which account attributes to read from an application when aggregating accounts with IdentityIQ
+
+### Account Group
+
+- Groups which grant/identify user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation 
+
 ### Account Correlation
 
 - Matches an account to an authoritative Identity Cube
@@ -393,4 +401,42 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
    - Correlation Wizard
    - Correlation rule
 
-## Managed Applications and Account Correlation
+
+### IdentityIQ Connectors
+
+#### Connector 
+
+- Software component to connect to business resource and read/write data
+- Provides normalized resource object
+
+#### Application
+
+- Any data source with which IdentityIQ communicates to manage governance and compliance for your enterprise (HR System, AD, etc)
+- Includes configuration details
+
+### Logging
+
+- Standard Out print statements (Not recommended for production)
+- Java application logging (log4j)
+- Email redirection
+- Audit configuration
+- Syslog logging configuration
+
+#### Print vs Log4j
+
+- System.out.println("I'm logging this message all the time.");
+- log.debug("I'm logging this message when debug is turned on.");
+
+#### Log4j 
+
+- file settings path: `<install dir>/WEB-INF/classes/log4j2.properties`
+
+```java
+// Log4j Example
+
+log.error("This is an error message");
+log.warn("This is an warn message");
+log.info("This is an info message");
+log.debug("This is an debug message");
+log.trace("This is an trace message");
+```
