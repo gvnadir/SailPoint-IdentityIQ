@@ -17,13 +17,13 @@ SailPoint IdentityIQ provides:
 
 ### IdentityIQ Capabilities
 
-**IdentityIQ Compliance Manager** and **Lifecycle Manager** modules provide access management for the applications used by an enterprise and they share:
+**IdentityIQ Compliance Manager** and **Lifecycle Manager** are **IdentityIQ modules** that provide access management for the applications used by an enterprise and they share:
 
 - Data and Database (Application Access Data)
 - User Interface
 - Implementation process
 
-**Integrated solutions** instead have separate:
+**Integrated solutions** are **not** IdentityIQ modules, and have separate:
 
 - Databases
 - User Interface
@@ -42,7 +42,7 @@ SailPoint IdentityIQ provides:
 #### Compliance Management
 
 - Functionality for applying security standards
-- User's access control
+- Access Certifications to ensure the users hold only the access they need
 - Policy scanning and violation detection
 
 ## Identities: Core of Security
@@ -63,29 +63,49 @@ Also known as **permissions**, are the type of access a user has when logging in
 
 The process of collecting or **reading** data from applications in your organization. Regular, periodic aggregation is key to keeping identity cubes up to date.
 
+### Correlation
+
+Correlation rules ensure that the right data is associated with the right identity. 
+
 #### Governance Model Steps
 
 1. **Aggregation**: Process of collecting data from the applications in your origanization, the key to keeping identities up-to-date
-2. **Compliance Management**: With this module, the enterprise can confirm that the users have onlty the access they need
+2. **Compliance Management**: With this module, the enterprise can confirm that the users have only the access they need
 3. **Lifecycle Management**: Changes management to identities over time
 
-## Access Request
+## Access Requests
 
-Users can ask for changes to access by requesting the addition or removal of roles and entitlements. Access requests are a function of the IdentityIQ Lifecycle Manager module.
+Users can ask for changes to access by requesting the _addition_ or _removal_ of **roles** and **entitlements**. Access requests are a function of the IdentityIQ Lifecycle Manager module.
 
-## Provisioning
+### Provisioning Plan
 
-> Provisioning refers to the **automated process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
+Submitting the request creates a **provisioning plan** to represent the request and kicks off the appropriate **workflow**.
+
+### Workflow
+
+The workflow definition determines how iiq process the request. For example the workflow can include a policy evaluation. Then the workflow handles submitting the request provisioning.	
+
+## Manual Provisioning
+
+> Manual Provisioning refers to the **process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
 
 ## Event-Driven Provisioning
 
-> Event-driven provisioning is a specific approach where provisioning actions are triggered by specific events or changes in the system. 
+>Event-driven provisioning is an **automated** process used to keep an identity's access current with their job needs and responsibilities. With it, enterprises can automatically provision or change access that’s required and remove access that's no longer necessary.
 
 ### Event-Driven Provisioning Process
 
-- IdentityIQ monitors data: looking for changes, also known as **events**
-- IdentityIQ detects changes: when an event, or change, is detected by IdentityIQ, provisioning is initiated
-- IdentityIQ provisioning data: the processo of **writing** the changes to the systems or applications that are defined to IdenitityIQ
+1. _IdentityIQ monitors data_: looking for changes, also known as **events**
+2. _IdentityIQ detects changes_: when an event, or change, is detected by IdentityIQ, provisioning is initiated. For example, an identity's department attribute has changed
+3. _IdentityIQ provisioning data_: the process of **writing** the changes to the systems or applications that are defined to IdenitityIQ
+
+### Lifecycle Events with Rapid Setup
+
+Event-driven provisioning is provided in IdentityIQ using **lifecycle events**. Rapid Setup provides pre-configured processes to streamline these lifecycle events:
+
+- **Joiners** are new identities that are starting with the company. 
+- **Movers** include identities that are moving to a new location or department or those changing job titles.
+- **Leavers** are identities that are departing the company. 
 
 ## Certification and Access Reviews
 
