@@ -75,7 +75,7 @@ Correlation rules ensure that the right data is associated with the right identi
 
 ## Access Requests
 
-Users can ask for changes to access by requesting the _addition_ or _removal_ of **roles** and **entitlements**. Access requests are a function of the IdentityIQ Lifecycle Manager module.
+>Users can ask for changes to access by requesting the _addition_ or _removal_ of **roles** and **entitlements**. Access requests are a function of the IdentityIQ Lifecycle Manager module.
 
 ### Provisioning Plan
 
@@ -85,9 +85,9 @@ Submitting the request creates a **provisioning plan** to represent the request 
 
 The workflow definition determines how iiq process the request. For example the workflow can include a policy evaluation. Then the workflow handles submitting the request provisioning.	
 
-## Manual Provisioning
+## Provisioning
 
-> Manual Provisioning refers to the **process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
+> Provisioning refers to the **process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
 
 ## Event-Driven Provisioning
 
@@ -117,23 +117,23 @@ During the certification process, a user's set of access is reviewed by certifie
 
 Steps of a sample manager certification campaign:
 
-1. A certification campaign is created
+1. **A certification campaign is created**
 
    A compliance officer creates a manager certification campaign to require all managers to review and certify the access of their direct reports. The campaign creator also specifies when the campaign will run, how long it will last, and other key dates.
 
-2. Access information is collected
+2. **Access information is collected**
 
    IdentityIQ collects and compiles all the required information related to identities, points of access, applications, and more. This process can take minutes, hours, or even days depending on the size of the campaign.
 
-3. Access reviews are created for certifier review
+3. **Access reviews are created for certifier review**
 
    During the generation phase, an access review is created for each certifier designated in the certification campaign, and you can configure IdentityIQ to notify the certifiers that they have access reviews awaiting their action. A typical certification campaign may require certifiers to complete their reviews in a 2 or 4 week timeframe.
 
-4. Each manager approves or revokes access
+4. **Each manager approves or revokes access**
 
    Managers open their assigned access reviews and approve or revoke access for their employees. If AI-Driven Access Recommendations is deployed in the organization, managers will see a suggestion, based on comparisons with other identities, for each access.
 
-5. Challenge, sign-off, and revocation
+5. **Challenge, sign-off, and revocation**
 
    An optional challenge phase allows users who would lose access to challenge that decision, and certifiers can reconsider their decisions.
 
@@ -141,7 +141,7 @@ Steps of a sample manager certification campaign:
 
 ## Policies
 
-> An IdentityIQ policy defines user access conditions that are unwanted by the organization. IdentityIQ policies define the access business policies of your enterprise. First, you define a policy, then IdentityIQ can prevent that condition from occurring or check the identities for that condition.
+> An IdentityIQ policy defines user access conditions that are _unwanted_ by the organization. IdentityIQ policies define the access business policies of your enterprise. First, you define a policy, then IdentityIQ can prevent that condition from occurring or check the identities for that condition.
 
 ### Separation of duties (SoD)
 
@@ -257,7 +257,7 @@ There are six objects to which extended attributes can added. In addition to ide
 - Accounts
 - Certifications
 
-### IdentityIQ Plugins
+## IdentityIQ Plugins
 
 A **plugin** is a software component that adds functionality to an existing program. You can use them to extend IdentityIQ functionality.
 
@@ -266,197 +266,3 @@ Plugins can be downloaded from Compass, and many SailPoint partners also provide
 - A support plugin developed by SailPoint helps collect data from your IdentityIQ instance and provides it to the SailPoint support team. The plugin collects the required data into one zip file for uploading.
 
 - The SQL Browser Tool provides administrators with view-only access to the IdentityIQ database to help implement and support IdentityIQ.
-
-## IdentityIQ Essentials
-
-### 1. Configure IdentityIQ
-
-1. Confirm the installation of IdentityIQ
-
-   - Using a linux terminal in the machine where IdentityIQ is installed, navigate to `~/tomcat/webapps/identityiq/WEB-INF/bin` and run the following command:
-
-     `./iiq console -j`
-
-     > The `-j` option enables using the arrow keys to page through commands entered during the session.
-
-   - Run the following command: `about`
-   - The **Version** line lists the iiq version. patch version and the build
-   - Enter `quit` to exit the console
-
-2. Explore IdentityIQ
-
-   - Navigate to IdentityIQ url: _http://localhost:8080/identityiq/_
-   - Log in to iiq as the iiq Administrator: **spadmin / admin**
-
-### 2. Create Database
-
-1. Generate Database Schema ( DDL )
-
-   Create IdentityIQ database:
-
-   `.../WEB-INF/bin/iiq schema`
-
-2. Extend Database
-
-   Create delta DDL
-
-   `.../WEB-INF/bin/iiq extendedSchema`
-
-3. Configure IdentityIQ Properties
-
-   Identify database to iiq
-
-   `.../WEB-INF/classes/iiq.properties`
-
-4. Initialize IdentityIQ Default Objects
-
-   - Initialize iiq
-
-     ```
-     .../WEB-INF/bin/iiq console
-     import init.xml
-     ```
-
-   - Initialize iiq Lifecycle Manager
-
-     ```
-     .../WEB-INF/bin/iiq console
-     import init-lcm.xml
-     ```
-
-### 3. Define Application
-
-- Representation of the imported source in SailPoint
-- _Applications/Application Definition/Add New Application_
-
-### 4. Aggregation Task
-
-- _Setup/Tasks/New Task/Account Aggregation_
-- **Generation of the Identity Cubes** from the defined applications
-- In _Identity/Identity Warehouse_ you can find the generated identitites
-- In _Identity/Identity Warehouse/Application Accounts_ there are the Application Accounts Data
-- In _Identity/Identity Warehouse/Attributes_, the Attributes sections is still blank because **there is no mapping between the identity attributes and the application yet**
-
-### 5. Define and Map Identity Attributes
-
-- In _Gear/Global Settings/Identity Mappings_ you can populate both Standard and Extended Identity Attributes from the Application Accounts
-
-### 6. Refresh Identity Cubes
-
-- In _Setup/Tasks/Refresh identity Cube_ it is possible to refresh the Identity Cubes in order to apply the mapped attributes at potin 3
-
-### Capabilities
-
-- Default User Rights includes
-  - Home Page
-  - Quicklinks
-  - My Work
-- Capabilities
-  - Define what additional rights a user has within IdentityIQ
-  - Control which menu options are available
-
-### Scoping
-
-- The act of subdividing data into logical groups and granting access based on those subdivision
-- Scopes control the objects a user can see and act upon
-
-### Workgroups
-
-- Set of identities treated as a single IdentityIQ identity
-- Workgroups are used for:
-  - Assigning access to IdentityIQ (capabilities, scopes)
-- Sharing IdentityIQ responsabilities
-  - Team-assigned work items
-  - Object ownership (best practice)
-
-### Populations
-
-- **Identity search** (saved query) that defines a set of identities that share a common set of attributes
-- Used as a filter on the set of identities included in a task, certification or report
-- Manually created
-- Can be created from **multiple search criteria**
-
-### Groups
-
-- Group of IdentityIQ users based on shared value of a **single identity** attribute and used to define target of operation (e.g. task filter, report filter)
-- Used to filter identities included in a task, certification or report
-- Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
-- Automatically created by running the `Refresh Group` task
-
-### Create Populations
-
-1. Navigate to _Intelligence/Advanced Analytics_ 
-2. Make sure `Search Type` is `Identity` and click `Clear Search`
-3. Select `Is Inactive: False` and `Type: Employee` and click `Run Search`
-4. From the `Result Options` drop down menu, select `Save Identities as Population`
-5. Set `Name: Active Employees` and `Description: Active employee identities`
-6. Update the population's visibility to public from _Setup/Groups/Populations_ click the Population's name, uncheck `private` and save
-
-### Create Groups
-
-1. Navigate to _Setup/Groups/Groups tab_ and click `Create New Group`
-2. Generate Groups using the newly created group configuration
-   - Navigate to _Setup/Tasks_ and search for `Refresh Groups`
-   - `Save and Execute`
-   - Check the groups
-
-### Create Workgroups
-
-1. Navigate to _Setup/Groups/Workgroups_ and click `Create Workgroup`
-
-### Account Schemas
-
-- Account schemas define which account attributes to read from an application when aggregating accounts with IdentityIQ
-
-### Account Group
-
-- Groups which grant/identify user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation 
-
-### Account Correlation
-
-- Matches an account to an authoritative Identity Cube
-   - If no correlation, non-authoritative cube is created
-- Options for configuring correlations:
-   - Rapid Setup correlation
-   - Correlation Wizard
-   - Correlation rule
-
-
-### IdentityIQ Connectors
-
-#### Connector 
-
-- Software component to connect to business resource and read/write data
-- Provides normalized resource object
-
-#### Application
-
-- Any data source with which IdentityIQ communicates to manage governance and compliance for your enterprise (HR System, AD, etc)
-- Includes configuration details
-
-### Logging
-
-- Standard Out print statements (Not recommended for production)
-- Java application logging (log4j)
-- Email redirection
-- Audit configuration
-- Syslog logging configuration
-
-#### Print vs Log4j
-
-- System.out.println("I'm logging this message all the time.");
-- log.debug("I'm logging this message when debug is turned on.");
-
-#### Log4j 
-
-- file settings path: `<install dir>/WEB-INF/classes/log4j2.properties`
-
-```java
-// Log4j Example
-
-log.error("This is an error message");
-log.warn("This is an warn message");
-log.info("This is an info message");
-log.debug("This is an debug message");
-log.trace("This is an trace message");
-```
