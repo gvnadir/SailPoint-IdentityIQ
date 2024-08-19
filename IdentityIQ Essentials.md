@@ -33,7 +33,7 @@ There are 3 types of searchable attributes:
 	Predefined by IdentityIQ
 
 2. Named Extended Attributes
- 
+
 	Defined by user
 
 3. Placeholder Extended Attributes
@@ -65,19 +65,19 @@ There are 3 types of searchable attributes:
 
    Create IdentityIQ database:
 
-   `.../WEB-INF/bin/iiq schema`
+   _.../WEB-INF/bin/iiq schema_
 
 2. Extend Database
 
    Create delta DDL
 
-   `.../WEB-INF/bin/iiq extendedSchema`
+   _.../WEB-INF/bin/iiq extendedSchema_
 
 3. Configure IdentityIQ Properties
 
    Identify database to iiq
 
-   `.../WEB-INF/classes/iiq.properties`
+   _.../WEB-INF/classes/iiq.properties_
 
 4. Initialize IdentityIQ Default Objects
 
@@ -118,45 +118,59 @@ There are 3 types of searchable attributes:
 
 ### Capabilities
 
-- Default User Rights includes
+_Identities > Identity Warehouse > User Rights_
+
+- Define what additional rights a user has **within IdentityIQ**
+- Control which menu options are available
+
+Default User Rights includes:
   - Home Page
   - Quicklinks
   - My Work
-- Capabilities
-  - Define what additional rights a user has within IdentityIQ
-  - Control which menu options are available
 
 ### Scoping
 
 - The act of subdividing data into logical groups and granting access based on those subdivision
 - Scopes control the objects a user can see and act upon
 
-### Workgroups
+### Workgroups (set of identity)
 
-- Set of identities treated as a single IdentityIQ identity
+- Set of identities treated as a single identity
 - Workgroups are used for:
   - Assigning access to IdentityIQ (capabilities, scopes)
 - Sharing IdentityIQ responsabilities
   - Team-assigned work items
   - Object ownership (best practice)
 
-### Populations
+### Populations (query)
 
-- **Identity search** (saved query) that defines a set of identities that share a common set of attributes
+_Intelligence > Advanced Analytics_
+
+- A population is a **saved query** performed in the _Advanced Analytics_ that defines a set of identities that share a common set of attributes
 - Used as a filter on the set of identities included in a task, certification or report
 - Manually created
 - Can be created from **multiple search criteria**
 
-### Groups
+### Groups (query)
 
-- Group of IdentityIQ users based on shared value of a **single identity** attribute and used to define target of operation (e.g. task filter, report filter)
+_Setup > Groups > Create New Group_
+
+- Collection of IdentityIQ users **based off a single identity attribute** (that must be checked as _Group Factory_ in the _Identity Mapping_) and used to define target of operation (e.g. task filter, report filter)
 - Used to filter identities included in a task, certification or report
-- Groups can be created by marking an identity attribute as `group factory` or through _Setup/Groups/Create New Group_
-- Automatically created by running the `Refresh Group` task
+- Groups can be created by marking an identity attribute as `group factory`
+- Automatically created by running the `Refresh Group` task, instead of manually creating populations
+- A Group is stored as a **query**
+
+Example:
+
+1. `Group Factory = Location`
+2. Running `Refresh Groups` Task
+3. Sub-Groups of Location: Austin, London, Sydney ...
+4. Members in the Sydney sub-group: Alex, David, Julia etc
 
 ### Create Populations
 
-1. Navigate to _Intelligence/Advanced Analytics_ 
+1. Navigate to _Intelligence/Advanced Analytics_
 2. Make sure `Search Type` is `Identity` and click `Clear Search`
 3. Select `Is Inactive: False` and `Type: Employee` and click `Run Search`
 4. From the `Result Options` drop down menu, select `Save Identities as Population`
@@ -181,7 +195,7 @@ There are 3 types of searchable attributes:
 
 ### Account Group
 
-- Groups which grant/identify user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation 
+- Groups which grant/identify user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation
 
 ### Account Correlation
 
@@ -195,7 +209,7 @@ There are 3 types of searchable attributes:
 
 ### IdentityIQ Connectors
 
-#### Connector 
+#### Connector
 
 - Software component to connect to business resource and read/write data
 - Provides normalized resource object
@@ -218,7 +232,7 @@ There are 3 types of searchable attributes:
 - System.out.println("I'm logging this message all the time.");
 - log.debug("I'm logging this message when debug is turned on.");
 
-#### Log4j 
+#### Log4j
 
 - file settings path: `<install dir>/WEB-INF/classes/log4j2.properties`
 
