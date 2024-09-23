@@ -114,7 +114,7 @@ There are 3 types of searchable attributes:
 
 ### 6. Refresh Identity Cubes
 
-- In _Setup/Tasks/Refresh identity Cube_ it is possible to refresh the Identity Cubes in order to apply the mapped attributes at potin 3
+- In _Setup/Tasks/Refresh identity Cube_ it is possible to refresh the Identity Cubes in order to apply the mapped attributes at point 3
 
 ### Capabilities
 
@@ -146,10 +146,9 @@ Default User Rights includes:
 
 _Intelligence > Advanced Analytics_
 
-- A population is a **saved query** performed in the _Advanced Analytics_ that defines a set of identities that share a common set of attributes
+- A population is a **saved query** that defines a set of identities that share a common set of attribute (can be created from **multiple search criteria**)
 - Used as a filter on the set of identities included in a task, certification or report
 - Manually created
-- Can be created from **multiple search criteria**
 
 ### Groups (query)
 
@@ -157,37 +156,37 @@ _Setup > Groups > Create New Group_
 
 - Collection of IdentityIQ users **based off a single identity attribute** (that must be checked as _Group Factory_ in the _Identity Mapping_) and used to define target of operation (e.g. task filter, report filter)
 - Used to filter identities included in a task, certification or report
-- Groups can be created by marking an identity attribute as `group factory`
-- Automatically created by running the `Refresh Group` task, instead of manually creating populations
+- Groups can be created by marking an identity attribute as _group factory_
+- Automatically created by running the _Refresh Group_ task, instead of manually creating populations
 - A Group is stored as a **query**
 
-Example:
+### _Examples:_
 
-1. `Group Factory = Location`
-2. Running `Refresh Groups` Task
+1. _Group Factory = Location_
+2. Running _Refresh Groups_ Task
 3. Sub-Groups of Location: Austin, London, Sydney ...
 4. Members in the Sydney sub-group: Alex, David, Julia etc
 
-### Create Populations
+#### Create Populations
 
 1. Navigate to _Intelligence/Advanced Analytics_
-2. Make sure `Search Type` is `Identity` and click `Clear Search`
-3. Select `Is Inactive: False` and `Type: Employee` and click `Run Search`
-4. From the `Result Options` drop down menu, select `Save Identities as Population`
-5. Set `Name: Active Employees` and `Description: Active employee identities`
-6. Update the population's visibility to public from _Setup/Groups/Populations_ click the Population's name, uncheck `private` and save
+2. Make sure _Search Type_ is _Identity_ and click _Clear Search_
+3. Select _Is Inactive: False_ and _Type: Employee_ and click _Run Search_
+4. From the _Result Options_ drop down menu, select _Save Identities as Population_
+5. Set _Name: Active Employees_ and _Description: Active employee identities_
+6. Update the population's visibility to public from _Setup/Groups/Populations_ click the Population's name, uncheck _private_ and save
 
-### Create Groups
+#### Create Groups
 
-1. Navigate to _Setup/Groups/Groups tab_ and click `Create New Group`
+1. Navigate to _Setup/Groups/Groups tab_ and click _Create New Group_
 2. Generate Groups using the newly created group configuration
-   - Navigate to _Setup/Tasks_ and search for `Refresh Groups`
-   - `Save and Execute`
+   - Navigate to _Setup/Tasks_ and search for _Refresh Groups_
+   - _Save and Execute_
    - Check the groups
 
-### Create Workgroups
+#### Create Workgroups
 
-1. Navigate to _Setup/Groups/Workgroups_ and click `Create Workgroup`
+1. Navigate to _Setup/Groups/Workgroups_ and click _Create Workgroup_
 
 ### Account Schemas
 
@@ -205,7 +204,6 @@ Example:
    - Rapid Setup correlation
    - Correlation Wizard
    - Correlation rule
-
 
 ### IdentityIQ Connectors
 
@@ -245,3 +243,102 @@ log.info("This is an info message");
 log.debug("This is an debug message");
 log.trace("This is an trace message");
 ```
+
+### IdentityIQ Policies
+
+> IdentityIQ policies define user access conditions that are _unwanted_ by the organizations.
+
+- Detect users who are currently in violation of policies
+- Prevent users from violating policies
+
+### IdentityIQ Certifications
+
+#### Purpose 
+
+- Keep user access compliant
+	- Legal requirements
+	- Industry standars or regulations
+	- Business rules
+- Provide oversight and visibility
+
+#### Responsabilities
+
+- Implementers and system administators
+	- Responsible for knowing how these features work
+  - Possibly responsible for providing rules
+	- Unlikely to be responsible for ongoing configuration and monitoring
+- Often companies have dedicated compliance teams/business administrators
+
+#### Access Certifications
+
+- The process of automating the periodic review and approval of:
+	- Identity Access
+	- Role Membership
+	- Account Group Membership
+	- Role Composition
+	- Account Group Permissions
+
+#### Certifications/Access Reviews
+
+##### Certifications
+
+- Define the certification campaign
+	- What is reviews
+	- When
+	- By whom
+- A certification is composed of one or more Access Reviews
+
+##### Access Reviews
+
+- Gather users' access data at time of generation
+- Provide that collection of data to be certified
+- Routed to the reviewer to take action
+
+#### Access Review Details
+
+- The detail of an Access Review
+- Present the entities to be certified
+
+#### Trigger Certifications 
+
+- Mulitple options for triggering certifications
+	- Manual creation
+	- Scheduled, recurring
+	- Data changed, triggering Certification Event
+
+### IdentityIQ Roles
+
+- An object that encapsulates sets of access
+
+#### Business Role
+
+- Roles associated directly to the identities based on their functions in the business
+
+#### IT Role
+
+- Each Business Role can be connected to one or more IT roles which logically group related entitlements together
+
+#### Birthright Roles vs Business Roles
+
+##### Birthright Roles
+
+- Baseline access, assigned to new
+personnel
+- Only assigned during joiner lifecycle
+events
+- Not requestable
+- Single tier
+
+##### Business Roles
+
+- Access for teams, departments,
+projects, etc.
+- Assigned by Identity Refresh task,
+"Refresh assigned, detected roles ... "
+- Requestable
+- Two-tier: required and permitted
+relationship with IT roles
+
+### Provisoining Overview
+
+> Adding, modifying, or deleting user or access data
