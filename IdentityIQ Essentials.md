@@ -135,12 +135,11 @@ Default User Rights includes:
 
 ### Workgroups (set of identity)
 
-- Set of identities treated as a single identity
-- Workgroups are used for:
-  - Assigning access to IdentityIQ (capabilities, scopes)
-- Sharing IdentityIQ responsabilities
-  - Team-assigned work items
-  - Object ownership (best practice)
+- Group of IdentityIQ users used for:
+	- Assigning access to IdentityIQ (capabilities, scopes)
+	- Sharing IdentityIQ responsabilities:
+		- Team-assigned work items
+		- Object ownership (best practice)
 
 ### Populations (query)
 
@@ -188,13 +187,43 @@ _Setup > Groups > Create New Group_
 
 1. Navigate to _Setup/Groups/Workgroups_ and click _Create Workgroup_
 
-### Account Schemas
+### Non-Authoritative Applications
+
+#### Authoritative Applications
+
+- Sources that provide a definitive list of people within the company
+
+#### Non-Authoritative Applications
+
+- Sources that provide additional accounts and entitlements for people within the company
+	- Finance systems
+	- Document sharing systems
+	- etc
+
+#### Account Schemas
 
 - Account schemas define which account attributes to read from an application when aggregating accounts with IdentityIQ
 
-### Account Group
+#### Entitlement Catalog / Identity Cube
 
-- Groups which grant/identify user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation
+In _Applications > Application Definition > Configuration > Schema > Attributes_ it is possibile to add these properties in the Properties colums:
+
+- Managed
+	- For every value of the attribute, we'll add an entry to the entitlement catalog (this is why internally an _entitlement_ is called _managed attribute_)
+- Entitlement
+	- Each value of the attribute will be marked as an entitlement on the user's cube 
+- Multi-Valued
+	- The user can have more than one value for the attribute
+
+#### Group Schema
+
+> **These are Account Group, so they are related to the account from the target system (such as LDAP or AD groups), NOT groups created from Setup > Groups > Create New Group**
+
+- Groups which grant/identitfy user access on other systems (applications) and loaded into IdentityIQ through (account group) aggregation
+- Optional, but common with non-authoritative applications
+- The group schema is how we define the attributes that define account groups on the system we are reading from
+- Groups are managed in Entitlement Catalog
+- The entitlement catalog shows whether the entry is based on a group definition by marking the type as "group" (otherwise marked as "entitlement")
 
 ### Account Correlation
 
@@ -219,11 +248,21 @@ _Setup > Groups > Create New Group_
 
 ### Logging
 
-- Standard Out print statements (Not recommended for production)
+- Standard Out print statements (Not recommended for production because sensitive info can be leaked and the _catalina.out_ may get filled quickly)
 - Java application logging (log4j)
 - Email redirection
 - Audit configuration
 - Syslog logging configuration
+
+
+The logging levels in the order from the least critical to the most critical is the following:
+
+1. trace
+2. debug
+3. info
+4. warn
+5. error
+6. fatal (rarely used)
 
 #### Print vs Log4j
 
@@ -232,17 +271,27 @@ _Setup > Groups > Create New Group_
 
 #### Log4j
 
-- file settings path: `<install dir>/WEB-INF/classes/log4j2.properties`
+File settings path: `<install dir>/WEB-INF/classes/log4j2.properties`.
+
+The `rootLogger` set the default log level for the whole application, but you can also configure logging levels for individual Java classes.
 
 ```java
 // Log4j Example
 
 log.error("This is an error message");
-log.warn("This is an warn message");
+log.warn("This is a warn message");
 log.info("This is an info message");
-log.debug("This is an debug message");
-log.trace("This is an trace message");
+log.debug("This is a debug message");
+log.trace("This is a trace message");
 ```
+
+In the example above, if the logging level in the `log4j2.properties` file is set to `warn` like the following
+
+`rootLogger.level=warn`
+
+the more severe logging levels are printed too, so `This is a warn message` and `This is an error message` get printed.
+
+> Because of the sheer volum of messages Trace produces it's often better to start with Debug when you are troubleshooting a process
 
 ### IdentityIQ Policies
 
@@ -339,6 +388,14 @@ projects, etc.
 - Two-tier: required and permitted
 relationship with IT roles
 
-### Provisoining Overview
+### Lifecycle Events
 
-> Adding, modifying, or deleting user or access data
+- Activities that happen in the normal course of a person's employment
+- Joining the company (joiners)
+- Changing departments/managers (movers)
+- Leaving the company (leavers)
+
+Lifecycle event is a two step process:
+
+1. Starts with an aggregation
+2. Ends with a Refresh Task
