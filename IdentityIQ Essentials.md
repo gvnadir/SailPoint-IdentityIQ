@@ -1,4 +1,65 @@
-# SailPoint - IdentityIQ
+# SailPoint - IdentityIQ Essential
+
+# Table of Contents
+
+1. **[IdentityIQ Essentials](#identityiq-essentials)**
+2. **[IdentityIQ Extended Attributes](#identityiq-extended-attributes)**
+3. **[Configure IdentityIQ](#1-configure-identityiq)**
+4. **[Create Database](#2-create-database)**
+5. **[Define Application](#3-define-application)**
+6. **[Aggregation Task](#4-aggregation-task)**
+7. **[Define and Map Identity Attributes](#5-define-and-map-identity-attributes)**
+8. **[Refresh Identity Cubes](#6-refresh-identity-cubes)**
+9. **[Capabilities](#capabilities)**
+10. **[Scoping](#scoping)**
+11. **[Workgroups (Set of Identity)](#workgroups-set-of-identity)**
+12. **[Populations (Query)](#populations-query)**
+	1. [Create Populations](#create-populations)
+	2. [Create Groups](#create-groups)
+	3. [Create Workgroups](#create-workgroups)
+13. **[Non-Authoritative Applications](#non-authoritative-applications)**
+	1. [Authoritative Applications](#authoritative-applications)
+	2. [Non-Authoritative Applications](#non-authoritative-applications)
+	3. [Account Schemas](#account-schemas)
+	4. [Entitlement Catalog / Identity Cube](#entitlement-catalog--identity-cube)
+	5. [Group Schema](#group-schema)
+14. **[Account Correlation](#account-correlation)**
+15. **[IdentityIQ Connectors](#identityiq-connectors)**
+	1. [Connector](#connector)
+	2. [Application](#application)
+16. **[Logging](#logging)**
+	1. [System.out vs Log4j](#systemout-vs-log4j)
+17. **[IdentityIQ Console](#identityiq-console)**
+	1. [Data Export Best Practice](#data-export-best-practice)
+18. **[IdentityIQ Policies](#identityiq-policies)**
+	1. [Policy Examples](#policy-examples)
+19. **[IdentityIQ Certifications](#identityiq-certifications)**
+	1. [Purpose](#purpose)
+	2. [Responsibilities](#responsibilities)
+	3. [Access Certifications](#access-certifications)
+	4. [Certifications/Access Reviews](#certificationsaccess-reviews)
+		1. [Certifications](#certifications)
+		2. [Access Reviews](#access-reviews)
+20. **[IdentityIQ Roles](#identityiq-roles)**
+	1. [Business Role](#business-role)
+	2. [IT Role](#it-role)
+	3. [Birthright Roles vs Business Roles](#birthright-roles-vs-business-roles)
+		1. [Birtright Roles](#birthright-roles)
+		2. [Business Roles](#business-roles)
+21. **[Provisioning](#provisioning)**
+22. **[Provisioning Policies](#provisioning-policies)**
+23. **[Provisioning Dependencies](#provisioning-dependencies)**
+24. **[Monitor Provisioning](#monitor-provisioning)**
+	1. [WorkflowCase Object](#workflowcase-object)	
+	2. [WorkItem](#workitem)
+25. **[Lifecycle Events](#lifecycle-events)**
+26. **[Quicklink](#quicklink)**
+    1. [Quicklink Populations](#quicklink-populations)
+27. **[Automated Provisioning](#automated-provisioning)**
+    1. [Native Change](#native-change)
+28. **[Other Provisioning Requests](#other-provisioning-requests)**
+    1. [Identity Batch Request](#identity-batch-request)
+
 
 ## IdentityIQ Essentials
 
@@ -6,7 +67,7 @@ We create Identity Cubes in IdentityIQ when we aggregate accounts from an **auth
 
 When an aggregation reads in data from an external source, a **refresh** calculates information on the Identity Cubes and can detect violation of policies and calculates risk scores.
 
-### IdentityIQ Extended Attributes
+## IdentityIQ Extended Attributes
 
 - Several objects can be extended:
 	- Applications
@@ -40,7 +101,7 @@ There are 3 types of searchable attributes:
 
 	An attribute marked as searchable but without a name column defined. In that case, iiq will use a placeholder column for it (such as _extended1_)
 
-### 1. Configure IdentityIQ
+## 1. Configure IdentityIQ
 
 1. Confirm the installation of IdentityIQ
 
@@ -59,7 +120,7 @@ There are 3 types of searchable attributes:
    - Navigate to IdentityIQ url: _http://localhost:8080/identityiq/_
    - Log in to iiq as the iiq Administrator: **spadmin / admin**
 
-### 2. Create Database
+## 2. Create Database
 
 1. Generate Database Schema ( DDL )
 
@@ -95,12 +156,12 @@ There are 3 types of searchable attributes:
      import init-lcm.xml
      ```
 
-### 3. Define Application
+## 3. Define Application
 
 - Representation of the imported source in SailPoint
 - _Applications/Application Definition/Add New Application_
 
-### 4. Aggregation Task
+## 4. Aggregation Task
 
 - _Setup/Tasks/New Task/Account Aggregation_
 - **Generation of the Identity Cubes** from the defined applications
@@ -108,15 +169,15 @@ There are 3 types of searchable attributes:
 - In _Identity/Identity Warehouse/Application Accounts_ there are the Application Accounts Data
 - In _Identity/Identity Warehouse/Attributes_, the Attributes sections is still blank because **there is no mapping between the identity attributes and the application yet**
 
-### 5. Define and Map Identity Attributes
+## 5. Define and Map Identity Attributes
 
 - In _Gear/Global Settings/Identity Mappings_ you can populate both Standard and Extended Identity Attributes from the Application Accounts
 
-### 6. Refresh Identity Cubes
+## 6. Refresh Identity Cubes
 
 - In _Setup/Tasks/Refresh identity Cube_ it is possible to refresh the Identity Cubes in order to apply the mapped attributes at point 3
 
-### Capabilities
+## Capabilities
 
 _Identities > Identity Warehouse > User Rights_
 
@@ -128,12 +189,12 @@ Default User Rights includes:
   - Quicklinks
   - My Work
 
-### Scoping
+## Scoping
 
 - The act of subdividing data into logical groups and granting access based on those subdivision
 - Scopes control the objects a user can see and act upon
 
-### Workgroups (set of identity)
+## Workgroups (set of identity)
 
 - Group of IdentityIQ users used for:
 	- Assigning access to IdentityIQ (capabilities, scopes)
@@ -141,7 +202,7 @@ Default User Rights includes:
 		- Team-assigned work items
 		- Object ownership (best practice)
 
-### Populations (query)
+## Populations (query)
 
 _Intelligence > Advanced Analytics_
 
@@ -149,7 +210,7 @@ _Intelligence > Advanced Analytics_
 - Used as a filter on the set of identities included in a task, certification or report
 - Manually created
 
-### Groups (query)
+## Groups (query)
 
 _Setup > Groups > Create New Group_
 
@@ -159,14 +220,14 @@ _Setup > Groups > Create New Group_
 - Automatically created by running the _Refresh Group_ task, instead of manually creating populations
 - A Group is stored as a **query**
 
-### _Examples:_
+_Examples:_
 
 1. _Group Factory = Location_
 2. Running _Refresh Groups_ Task
 3. Sub-Groups of Location: Austin, London, Sydney ...
 4. Members in the Sydney sub-group: Alex, David, Julia etc
 
-#### Create Populations
+### Create Populations
 
 1. Navigate to _Intelligence/Advanced Analytics_
 2. Make sure _Search Type_ is _Identity_ and click _Clear Search_
@@ -175,7 +236,7 @@ _Setup > Groups > Create New Group_
 5. Set _Name: Active Employees_ and _Description: Active employee identities_
 6. Update the population's visibility to public from _Setup/Groups/Populations_ click the Population's name, uncheck _private_ and save
 
-#### Create Groups
+### Create Groups
 
 1. Navigate to _Setup/Groups/Groups tab_ and click _Create New Group_
 2. Generate Groups using the newly created group configuration
@@ -183,28 +244,28 @@ _Setup > Groups > Create New Group_
    - _Save and Execute_
    - Check the groups
 
-#### Create Workgroups
+### Create Workgroups
 
 1. Navigate to _Setup/Groups/Workgroups_ and click _Create Workgroup_
 
-### Non-Authoritative Applications
+## Non-Authoritative Applications
 
-#### Authoritative Applications
+### Authoritative Applications
 
 - Sources that provide a definitive list of people within the company
 
-#### Non-Authoritative Applications
+### Non-Authoritative Applications
 
 - Sources that provide additional accounts and entitlements for people within the company
 	- Finance systems
 	- Document sharing systems
 	- etc
 
-#### Account Schemas
+### Account Schemas
 
 - Account schemas define which account attributes to read from an application when aggregating accounts with IdentityIQ
 
-#### Entitlement Catalog / Identity Cube
+### Entitlement Catalog / Identity Cube
 
 In _Applications > Application Definition > Configuration > Schema > Attributes_ it is possibile to add these properties in the Properties colums:
 
@@ -215,7 +276,7 @@ In _Applications > Application Definition > Configuration > Schema > Attributes_
 - Multi-Valued
 	- The user can have more than one value for the attribute
 
-#### Group Schema
+### Group Schema
 
 > **These are Account Group, so they are related to the account from the target system (such as LDAP or AD groups), NOT groups created from Setup > Groups > Create New Group**
 
@@ -225,7 +286,7 @@ In _Applications > Application Definition > Configuration > Schema > Attributes_
 - Groups are managed in Entitlement Catalog
 - The entitlement catalog shows whether the entry is based on a group definition by marking the type as "group" (otherwise marked as "entitlement")
 
-### Account Correlation
+## Account Correlation
 
 - Matches an account to an authoritative Identity Cube
    - If no correlation, non-authoritative cube is created
@@ -234,19 +295,19 @@ In _Applications > Application Definition > Configuration > Schema > Attributes_
    - Correlation Wizard
    - Correlation rule
 
-### IdentityIQ Connectors
+## IdentityIQ Connectors
 
-#### Connector
+### Connector
 
 - Software component to connect to business resource and read/write data
 - Provides normalized resource object
 
-#### Application
+### Application
 
 - Any data source with which IdentityIQ communicates to manage governance and compliance for your enterprise (HR System, AD, etc)
 - Includes configuration details
 
-### Logging
+## Logging
 
 - Standard Out print statements (Not recommended for production because sensitive info can be leaked and the _catalina.out_ may get filled quickly)
 - Java application logging (log4j)
@@ -264,12 +325,33 @@ The logging levels in the order from the least critical to the most critical is 
 5. error
 6. fatal (rarely used)
 
-#### Print vs Log4j
+### System.out vs Log4j
 
-- System.out.println("I'm logging this message all the time.");
-- log.debug("I'm logging this message when debug is turned on.");
+```java
+System.out.println("I'm logging this message all the time.");
+log.debug("I'm logging this message when debug is turned on.");
+```
 
-#### Log4j
+Advantages of using Log4j:
+
+- Reduced Size of `catalina.out`:
+    - Logs are separated from catalina.out, preventing it from becoming bloated
+
+- Log Rotation and Size Limits:
+    - Automatic log rotation based on size or time
+    - Ability to set size limits on log files
+
+- Archiving and Compression:
+    - Automatic archiving of old logs
+    - Compression of logs to save disk space
+
+- Selective Logging to Control File Growth:
+    - Control logging output by setting log levels (e.g., DEBUG, ERROR)
+    - Granular logging for specific components or time periods
+
+- Easier Maintenance:
+    - Smaller, organized log files make maintenance and review easier
+    - Reduced overall disk space usage for logs
 
 File settings path: `<install dir>/WEB-INF/classes/log4j2.properties`.
 
@@ -293,16 +375,45 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 
 > Because of the sheer volum of messages Trace produces it's often better to start with Debug when you are troubleshooting a process
 
-### IdentityIQ Policies
+## IdentityIQ Console
+
+- Command-line interface
+- Authentication required (only users with the System Administrator capability ca access the console)
+- Connects directly to database
+	- Can be used to troubleshoot connectivity problems
+- Some commands are only available via console
+	- SQL query interface
+	- Export
+
+### Data Export Best Practice
+
+- Remove information unique to IdentityIQ instance (`id`, `created`, `modified`)
+	- Use export and checkout `clean` option
+	- Import `noid` option
+
+## IdentityIQ Policies
 
 > IdentityIQ policies define user access conditions that are _unwanted_ by the organizations.
 
 - Detect users who are currently in violation of policies
 - Prevent users from violating policies
 
-### IdentityIQ Certifications
+### Policy Examples
 
-#### Purpose 
+- Mutually exclusive access
+- Incorrect responsibilities
+- More than one account
+
+## IdentityIQ Certifications
+
+A Certification or Access Review is nothing more than the process of automating the periodic review and approval of certain things such as:
+- Identity Access
+- Role Membership
+- Account Group Membership
+- Role Composition
+- Account Group Permissions
+
+### Purpose 
 
 - Keep user access compliant
 	- Legal requirements
@@ -310,7 +421,7 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 	- Business rules
 - Provide oversight and visibility
 
-#### Responsabilities
+### Responsabilities
 
 - Implementers and system administators
 	- Responsible for knowing how these features work
@@ -318,7 +429,7 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 	- Unlikely to be responsible for ongoing configuration and monitoring
 - Often companies have dedicated compliance teams/business administrators
 
-#### Access Certifications
+### Access Certifications
 
 - The process of automating the periodic review and approval of:
 	- Identity Access
@@ -327,9 +438,9 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 	- Role Composition
 	- Account Group Permissions
 
-#### Certifications/Access Reviews
+### Certifications/Access Reviews
 
-##### Certifications
+#### Certifications
 
 - Define the certification campaign
 	- What is reviews
@@ -337,65 +448,134 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 	- By whom
 - A certification is composed of one or more Access Reviews
 
-##### Access Reviews
+#### Access Reviews
 
 - Gather users' access data at time of generation
 - Provide that collection of data to be certified
 - Routed to the reviewer to take action
 
-#### Access Review Details
+### Access Review Details
 
 - The detail of an Access Review
 - Present the entities to be certified
 
-#### Trigger Certifications 
+### Trigger Certifications 
 
 - Mulitple options for triggering certifications
 	- Manual creation
 	- Scheduled, recurring
 	- Data changed, triggering Certification Event
 
-### IdentityIQ Roles
+## IdentityIQ Roles
 
 - An object that encapsulates sets of access
 
-#### Business Role
+### Business Role
 
 - Roles associated directly to the identities based on their functions in the business
 
-#### IT Role
+### IT Role
 
 - Each Business Role can be connected to one or more IT roles which logically group related entitlements together
 
-#### Birthright Roles vs Business Roles
+### Birthright Roles vs Business Roles
 
-##### Birthright Roles
+#### Birthright Roles
 
-- Baseline access, assigned to new
-personnel
-- Only assigned during joiner lifecycle
-events
+- Baseline access, assigned to new personnel
+- Only assigned during joiner lifecycle events
 - Not requestable
 - Single tier
 
-##### Business Roles
+#### Business Roles
 
-- Access for teams, departments,
-projects, etc.
-- Assigned by Identity Refresh task,
-"Refresh assigned, detected roles ... "
+- Access for teams, departments, projects, etc.
+- Assigned by Identity Refresh task, "Refresh assigned, detected roles ... "
 - Requestable
-- Two-tier: required and permitted
-relationship with IT roles
+- Two-tier: required and permitted relationship with IT roles
 
-### Lifecycle Events
+## Provisioning
+
+> Provisioning is the process for managing changes to user and access data, which can include adding, modifying, or removing access.
+
+## Provisioning Policies
+
+- Provide values to **create**, **update**, and **delete** accounts on connected applications
+	- Values can be provided manually by user
+	- Values can be provided by IdentityIQ (auto-calculated or static)
+
+## Provisioning Dependencies
+
+- Your company may have dependency requirements where a user's access to an application is dependent on access from another application.
+
+- IdentityIQ allows this through the application dependency configuration found in the application definition (_Configuration > Provisioning Policies_).
+
+- You can specify that a user must have an account on another system before we create their account for this system.
+
+## Monitor Provisioning
+
+### WorkflowCase Object
+
+- Created when action in IdentityIQ triggers a workflow
+- Contains details for a running workflow process
+- Exists only until workflow completes
+
+### WorkItem
+
+- Created by a workflow (or IdentityIQ) to obtain input from a person
+- Exists until the input is acquired
+- Examples
+	- Approvals
+	- Policy violations
+	- Request for manual provisioning
+	- Access review delegations
+	- Request for data
+
+## Lifecycle Events
 
 - Activities that happen in the normal course of a person's employment
-- Joining the company (joiners)
-- Changing departments/managers (movers)
-- Leaving the company (leavers)
+	- Joining the company (joiners)
+	- Changing departments/managers (movers)
+	- Leaving the company (leavers)
 
 Lifecycle event is a two step process:
 
 1. Starts with an aggregation
 2. Ends with a Refresh Task
+
+> To be able to view the lifecycle event details under Track My Requests, you must use a workflow that creates and updates the request record 
+
+## Quicklink
+
+### Quicklink Populations
+
+- Flexible method to control who
+has access to a Quicklink
+- Provide for answering the
+three questions:
+	- Who can request?
+	- Which identities can be targeted?
+	- What can be requested?
+
+## Automated Provisioning
+
+### Native Change
+
+- A data change that is discovered at the application account level, during an aggregation process
+	- Undesired, unexpected
+	- Not following normal process
+
+## Other Provisioning Requests
+
+### Identity Batch Request
+
+- Batch request management
+	- Process mass identity changes via a file upload
+- Operations Supported
+	- Create/Modify Identity
+	- Create/Delete Account
+	- Enable/Disable Account
+	- Unlock Account
+	- Add/Remove Role
+	- Add/Remove Entitlement
+	- Change Password

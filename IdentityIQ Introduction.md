@@ -1,4 +1,58 @@
-# SailPoint - IdentityIQ
+# SailPoint - IdentityIQ Introduction
+
+# Table of Contents
+
+1. **[Introducing IdentityIQ](#introducing-identityiq)**
+	1. [Benefits](#benefits)  
+	2. [IdentityIQ Capabilities](#identityiq-capabilities)  
+		1. [Lifecycle Management](#lifecycle-management)  
+		2. [Compliance Management](#compliance-management)  
+2. **[Identities: Core of Security](#identities-core-of-security)**
+   1. [Attribute](#attribute)  
+   2. [Entitlement](#entitlement)  
+   3. [Aggregation](#aggregation)  
+   4. [Correlation](#correlation)  
+		1. [Governance Model Steps](#governance-model-steps)  
+
+4. **[Access Requests](#access-requests)**
+   1. [Provisioning Plan](#provisioning-plan)  
+   2. [Workflow](#workflow)  
+
+5. **[Provisioning](#provisioning)**
+   1. [Event-Driven Provisioning](#event-driven-provisioning)  
+   2. [Event-Driven Provisioning Process](#event-driven-provisioning-process)  
+   3. [Lifecycle Events with Rapid Setup](#lifecycle-events-with-rapid-setup)  
+
+6. **[Certification and Access Reviews](#certification-and-access-reviews)**
+   1. [Certification Steps](#certification-steps)  
+
+7. **[Policies](#policies)**
+   1. [Separation of Duties (SoD)](#separation-of-duties-sod)  
+   2. [Dormant Accounts](#dormant-accounts)  
+   3. [Acting on Violations](#acting-on-violations)  
+
+8. **[Analytics and Reports](#analytics-and-reports)**
+   1. [Advanced Analytics](#advanced-analytics)  
+   2. [IdentityIQ Reports](#identityiq-reports)  
+
+9. **[Roles](#roles)**
+   1. [IdentityIQ Roles](#identityiq-roles)  
+   2. [Increase Efficiency](#increase-efficiency)  
+   3. [Reduce Risk](#reduce-risk)  
+   4. [Automatic Role Assignment](#automatic-role-assignment)  
+   5. [Role Modeling Options](#role-modeling-options)  
+
+10. **[Extending IdentityIQ](#extending-identityiq)**
+    1. [Extended Attributes](#extended-attributes)  
+    2. [Rules & Branding](#rules--branding)  
+    3. [Workflows](#workflows)  
+    4. [Quicklinks](#quicklinks)  
+    5. [Custom Connectors](#custom-connectors)  
+    6. [More on extended attributes](#more-on-extended-attributes)
+    7. [Other Objects to Extend](#other-objects-to-extend)  
+
+11. **[IdentityIQ Plugins](#identityiq-plugins)**
+
 
 ## Introducing IdentityIQ
 
@@ -89,7 +143,7 @@ The workflow definition determines how iiq process the request. For example the 
 
 > Provisioning refers to the **process of granting or revoking access** to various systems, applications, and resources based on defined policies and rules. It involves creating, modifying, or deleting user accounts, roles, and permissions across an organization's IT infrastructure. 
 
-## Event-Driven Provisioning
+### Event-Driven Provisioning
 
 >Event-driven provisioning is an **automated** process used to keep an identity's access current with their job needs and responsibilities. With it, enterprises can automatically provision or change access that’s required and remove access that's no longer necessary.
 
