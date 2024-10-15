@@ -99,3 +99,62 @@ Because IdentityIQ is a Java application, it follows an object-oriented paradigm
 - Certification objects
 - Link and bundle objects
 - And more
+
+
+### SailPointContext
+
+> The SailPointContext object is a critical component for working with IdentityIQ’s API in BeanShell rules and scripts.  It is effectively the entry point to the API – the class that lets you retrieve and work with other objects. This lesson covers the key operations supported by the SailPointContext and the two objects used to direct and constrain its searching functions – the QueryOptions and the Filter objects
+
+The SailPointContext supports object retrieval through multiple methods, and some of these support more than one signature, so they behave differently based on the arguments you provide.
+
+#### getObjects
+
+The `getObjects` method lets you retrieve one or more objects of a specified type. View examples below.
+
+```java
+List <SailPointObject> getObjects(class)
+List <SailPointObject> getObjects(class, QueryOptions) // better performance
+```
+
+#### search
+
+The `search` method lets you retrieve whole objects, like getObjects does, or individual attributes of objects that match your search criteria. 
+
+```java
+Iterator<SailPointObject> search(class, QueryOptions)
+
+// Example
+Iterator apps = context.search(Application.class, qo);
+
+Iterator<SailPointObject> search(class, QueryOptions, properties) // better performance
+
+// Example
+Iterator users = context.search(Identity.class, qo, "name, status");
+Iterator users = context.search(Identity.class, qo, props);
+```
+
+#### Single Object Retrieval
+
+The SailPointContext offers two options for retrieving a single object by a unique identifier. Both require specification of the class name, either the name or GUID value as an argument – effectively, their search criteria.  
+
+#### getObjectByName
+
+The `getObjectByName` method requires the class name as a string.
+
+```java
+SailPointObject getObjectByName(class, String name)
+
+// Example
+Identity id = context.getObjectByName(Identity.class, "Bob.Smith");
+```
+
+#### getObjectById
+
+The `getObjectbyId` method requires the the GUID value of the class.
+
+```java
+SailPointObject getObjectById(class, String guid)
+
+// Example
+Application app = context.getObjectById(Application.class, "ff80808161b51a2a0161b51a434a0002");
+```
