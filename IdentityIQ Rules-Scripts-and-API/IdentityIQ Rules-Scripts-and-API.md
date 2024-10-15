@@ -1,6 +1,6 @@
 # SailPoint IdentityIQ Rules, Scripts and API
 
-# Table of Contents
+## Table of Contents
 
 1. **[Rules, Scripts, and Beanshell](#rules-scripts-and-beanshell)**
 	1. [Rule Arguments](#rule-arguments)
@@ -157,4 +157,37 @@ SailPointObject getObjectById(class, String guid)
 
 // Example
 Application app = context.getObjectById(Application.class, "ff80808161b51a2a0161b51a434a0002");
+```
+
+#### QueryOptions - Filtering
+
+```java
+// Department equals Accounting
+Filter.eq(”department”,”Accounting)
+
+// Age greater than 21
+Filter.gt(“age”,21)
+
+// First name starts with Ar
+Filter.like(“firstName”,”Ar”,MatchMode.START)
+
+// For multi-valued attributes, search for one or more matches with selectors like “Cost Center contains all of a set of cost center codes"
+Filter.containsAll(“costCenter”,costCenterCodes);
+
+// Boolean filters require just an attribute and operator, like isnull or notnull
+Filter.isnull(“region”)
+Filter.notnull(“region”);
+```
+
+There are several ways to combine filters. You can use the operators and and or on the Filter class to combine filters. This can be straightforward or nested to multiple levels.
+
+```java
+// Returns identities who are in the Finance department who also have Catherine Simmons as a manager.
+Filter f = Filter.and(Filter.eq("department", "Finance"), Filter.eq("manager.name", "Catherine.Simmons")
+
+// Returns identities who are either in the Finance department or who have Catherine Simmons as a manager; only one of the criteria must be true.
+Filter f = Filter.or(Filter.eq("department", "Finance"), Filter.eq("manager.name", "Catherine.Simmons"))
+
+// The last example selects identities who are either (in the Finance department and report to Catherine Simmons) or (they have the last name Smith).
+Filter f = Filter.or(Filter.and(Filter.eq("department", "Finance"), Filter.eq("manager.name", "Catherine.Simmons")), Filter.eq("lastname", "Smith"));
 ```
