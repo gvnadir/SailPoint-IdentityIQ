@@ -9,6 +9,35 @@
 	2. [Print the BeanShell Namespace](#print-the-beanshell-namespace)  
 	3. [Rule Libraries](#rule-libraries)
 2. **[API Introduction](#rules-scripts-and-beanshell)**
+	1. [IdentityIQ Architecture](#identityiq-architecture)
+3. **[SailPointContex](#sailpointcontext)**
+	1. [Multiple Object Retrieval](#multiple-object-retrieval)
+		1. [getObjects](#getobjects)
+		2. [search](#search)
+	2. [Single Object Retrieval](#single-object-retrieval)
+		1. [getObjectByName](#getobjectbyname)
+		2. [getObjectById](#getobjectbyid)
+	3. [QueryOptions - Filtering](#queryoptions---filtering)
+4. **[Object Model](#object-model)**
+		1. [Custom Objects](#custom-objects)
+5. **[Common API Uses](#common-api-uses)**
+	1. [Aggregation Rules](#aggregation-rules)
+		1. [Customization Rule](#customization-rule)
+		2. [Correlation Rule](#correlation-rule)
+		3. [Creation Rule](#creation-rule)
+6. **[Best Practices](#best-practices)**
+	1. [Logging](#logging)
+		1. [Standard out vs. Log4j](#standard-out-vs-log4j)
+		2. [Log4j Configuration](#log4j-configuration)
+	2. [Null and Void Checking](#null-and-void-checking)
+	3. [Saving Objects](#saving-objects)
+	4. [Processing Cursors](#processing-cursors)
+	5. [Decache](#decache)
+7. **[Performance](#performance)**
+	1. [Searching](#searching)
+	2. [Iterative Rules](#iterative-rules)
+	3. [Meter Object](#meter-object)
+ 
 
 ## Rules, Scripts, and Beanshell
 
@@ -34,15 +63,7 @@ The code example below is URL encoded for use within an XML file.
 System.out.println("Beanshell namespace:");
 
 for (int i = 0 ; i &lt; this.variables.length ; i++) {
-		String name = this.variables[i];
-		if ("transient".equals(name)) { continue; } 
-		Object value = eval(name);
-		if (value == void)
-				print(name + " = void");
-		else if (value == null)
-				print(name + " = null");
-		else
-				print(name + ": " + value.getClass().getSimpleName() + " = " + value);
+
 }
 ```
 
@@ -107,6 +128,8 @@ Because IdentityIQ is a Java application, it follows an object-oriented paradigm
 
 The SailPointContext supports object retrieval through multiple methods, and some of these support more than one signature, so they behave differently based on the arguments you provide.
 
+### Multiple Object Retrieval
+
 ### getObjects
 
 The `getObjects` method lets you retrieve one or more objects of a specified type. View examples below.
@@ -137,7 +160,7 @@ Iterator users = context.search(Identity.class, qo, props);
 
 The SailPointContext offers two options for retrieving a single object by a unique identifier. Both require specification of the class name, either the name or GUID value as an argument – effectively, their search criteria.  
 
-### getObjectByName
+#### getObjectByName
 
 The `getObjectByName` method requires the class name as a string.
 
@@ -148,7 +171,7 @@ SailPointObject getObjectByName(class, String name)
 Identity id = context.getObjectByName(Identity.class, "Bob.Smith");
 ```
 
-### getObjectById
+#### getObjectById
 
 The `getObjectbyId` method requires the the GUID value of the class.
 
@@ -342,10 +365,9 @@ if (iterator != null) {
 This is a recommended memory management practice. The above example runs a decache every 100 objects, freeing up all the memory that those objects have been occupying so it can be reused by this or another process.  With potentially large objects like identity objects, this could amount to megabytes of memory being freed.
 
 
-### Performance
+## Performance
 
-#### Searching
-
+### Searching
 
 First, when performing queries in your custom code, use the projection query - `search()` with properties. This is significantly more efficient than getObjects.
 
@@ -353,7 +375,7 @@ In many cases, you only need an attribute or two anyway, so target your query to
 
 Next, always try to filter your searches with a QueryOptions object that allows you to retrieve the minimum data you need. The less data your code has to process, the better. Let the query do as much of the work up front as possible.
 
-#### Iterative Rules
+### Iterative Rules
 
 The performance of your rules will, of course, impact the performance of your system. This is especially important in iterative rules – those that run multiple times within a single process.
 
@@ -378,7 +400,7 @@ Look for opportunities to pull operations out of iterative rules. For example, i
 
 Some rules even have state objects that can share values across related rules, so make use of those too.
 
-#### Meter Object
+### Meter Object
 
 You can measure the performance of your rules to understand what is and isn’t working efficiently and to evaluate the effectiveness of any code changes made to improve performance. 
 
@@ -406,5 +428,3 @@ You can import the class then call its enterByName method to mark the start of a
 Include your whole rule under one meter name or have different parts of the rule tracked with different names.
 
 You can also view the stats on the Call Timings page. To access the page, go to **Debug Page - wrench icon - Call Timings**. You'll see the timings for some built-in IdentityIQ processes plus your custom meters.
-
-
