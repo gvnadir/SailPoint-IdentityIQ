@@ -19,7 +19,7 @@
 		2. [getObjectById](#getobjectbyid)
 	3. [QueryOptions - Filtering](#queryoptions---filtering)
 4. **[Object Model](#object-model)**
-		1. [Custom Objects](#custom-objects)
+	1. [Custom Objects](#custom-objects)
 5. **[Common API Uses](#common-api-uses)**
 	1. [Aggregation Rules](#aggregation-rules)
 		1. [Customization Rule](#customization-rule)
