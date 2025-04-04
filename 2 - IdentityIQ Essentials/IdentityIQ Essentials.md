@@ -378,7 +378,7 @@ the more severe logging levels are printed too, so `This is a warn message` and 
 ## IdentityIQ Console
 
 - Command-line interface
-- Authentication required (only users with the System Administrator capability ca access the console)
+- Authentication required (only users with the System Administrator capability can access the console)
 - Connects directly to database
 	- Can be used to troubleshoot connectivity problems
 - Some commands are only available via console
