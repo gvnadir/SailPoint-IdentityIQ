@@ -4,7 +4,7 @@
 
 Each folder refers to a chapter of the SailPoint Identity Security Engineer chapter.
 Inside there is a:
-  - Labs folder: containing the excercise preview such as "s1e1" (Section 1, Excerise 1)
+  - Labs folder: containing the excercise preview such as "s1e1" (Section 1, Excercise 1)
   - PrintScreen folder: containing important screenshots of the lessons
   - A markdown containing notes about the current chapter
   - A pdf version of the markdown notes
