@@ -8,6 +8,7 @@ Inside there is a:
   - PrintScreen folder: containing important screenshots of the lessons
   - A markdown containing notes about the current chapter
   - A pdf version of the markdown notes
+    
 In the Root of the repo, there is [Quiz](./Quiz) folder, containig PrintScreens of the quizzes of each lesson.
 
 Additional OneNote notes can be found [here](https://1drv.ms/o/c/832a1b6dad8a7ebc/Erx-iq1tGyoggINxAgAAAAAB7lY8SZmO6pbyCZlCOGq_HA?e=m0b2xj)
